@@ -25,6 +25,10 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<cloudHubDeployment>
+					    <muleVersion>${mule.version}</muleVersion>
+					    <applicationName>${cloudhub.application.name}</applicationName>
+				</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
