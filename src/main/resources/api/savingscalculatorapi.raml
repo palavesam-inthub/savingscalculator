@@ -2,25 +2,25 @@
 version: v1
 title: SavingsCalculatorAPI
 description: Savings plan estimator to calculate growth from compound interest
-baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/8a1cf7c9-5fd3-457f-8c0f-ed52e01d5123/ # baseUri: https://anypoint.mulesoft.com
+baseUri: http://build-savingscalculator.us-e2.cloudhub.io/api
+documentation:
+  - title: Home
+    content: SavingsCalculatorAPI calculates the savings account balance for a fixed interest rate and annual deposits over a number of years.
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
 types:
   balance:
    type: string
    description:  Account balance
 
-/savings:
- get:
-  responses:
-    200:
-      description: 200 OK
-      body:
-        application/json:
-          type: balance
-          example: |
-            {
-              "balance":"8933.42"
-            }
-         
+/:
+ is: [client-id-required] 
+ get:   
   description: Calculate savings growth with annual compounding
   queryParameters:
     deposit:
@@ -44,7 +44,18 @@ types:
      format: int32
      example:
        20
+  responses:
+    200:
+      description: 200 OK
+      body:
+        application/json:
+          type: balance
+          example: |
+            {
+              "balance":"8933.42"
+            }
   
+       
        
 
 
