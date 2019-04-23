@@ -1,0 +1,61 @@
+#%RAML 1.0
+version: v1
+title: SavingsCalculatorAPI
+description: Savings plan estimator to calculate growth from compound interest
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/8a1cf7c9-5fd3-457f-8c0f-ed52e01d5123/ # baseUri: https://anypoint.mulesoft.com
+types:
+  balance:
+   type: string
+   description:  Account balance
+
+/savings:
+ get:
+  responses:
+    200:
+      description: 200 OK
+      body:
+        application/json:
+          type: balance
+          example: |
+            {
+              "balance":"8933.42"
+            }
+         
+  description: Calculate savings growth with annual compounding
+  queryParameters:
+    deposit:
+     type: number
+     required: true
+     description: Annual deposits
+     format: float
+     example:
+       300
+    rate:
+     type: number
+     required: true
+     description: Interest rate
+     format: double
+     example:
+       0.01
+    years:
+     type: integer
+     required: true
+     description: Years of saving
+     format: int32
+     example:
+       20
+  
+       
+
+
+
+
+
+  
+
+
+  
+
+
+  
+  
