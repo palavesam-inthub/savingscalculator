@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="savingscalculatorapi-test-suite.xml" />
+	<munit:test name="savingscalculatorapi-test-suite-savingscalculatorapi-mainTest" description="Test" doc:id="1d3906bf-f362-4873-81f3-e5ba0246d2aa">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to savingscalculatorapi-main" doc:id="44e6b344-f423-435d-8ae1-7ea00a3b75ea" name="get:\:savingscalculatorapi-config"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="0faf50c1-21fe-44c2-91ab-03d4492b105e" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="HTTPresponse other than 200"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
