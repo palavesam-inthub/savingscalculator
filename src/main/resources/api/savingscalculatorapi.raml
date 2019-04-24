@@ -2,11 +2,10 @@
 version: v1
 title: SavingsCalculatorAPI
 description: Savings plan estimator to calculate growth from compound interest
-baseUri: http://build-savingscalculator.us-e2.cloudhub.io/api/
+baseUri: http://build-savingscalculator.us-e2.cloudhub.io/api
 documentation:
   - title: Home
     content: SavingsCalculatorAPI calculates the savings account balance for a fixed interest rate and annual deposits over a number of years.
-    
 traits:
   client-id-required:
     headers:
@@ -19,8 +18,7 @@ types:
    type: string
    description:  Account balance
 
-/savings:
- is: [client-id-required]
+/:
  get:   
   description: Calculate savings growth with annual compounding
   queryParameters:

@@ -7,6 +7,9 @@
     <http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="bec56049-cb58-4a54-9dc2-71664bdfda1e" >
 		<http:request-connection host="savingsample.mybluemix.net" />
 	</http:request-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="c43c9011-3670-417c-a8e2-5430eeb8aad1" >
+		<http:request-connection host="savingsample.mybluemix.net" />
+	</http:request-config>
 	<flow name="savingscalculatorapi-main">
         <http:listener config-ref="savingscalculatorapi-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -16,16 +19,6 @@
             </http:error-response>
         </http:listener>
         <apikit:router config-ref="savingscalculatorapi-config" />
-        <logger level="INFO" doc:name="Logger" doc:id="54fe221b-299f-429c-aca8-51d05f0a3be2" />
-		<http:request method="GET" doc:name="Request" doc:id="9d1cf0be-39cc-4689-bf74-4bbb8b2ecae0" config-ref="HTTP_Request_configuration" path="/api/Plans/estimate">
-			<http:query-params ><![CDATA[#[output application/java
----
-{
-	"years" : attributes.queryParams.years,
-	"deposit" : attributes.queryParams.deposit,
-	"rate" : attributes.queryParams.rate
-}]]]></http:query-params>
-		</http:request>
 		<error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
                 <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
@@ -134,15 +127,24 @@ output application/json
             </on-error-propagate>
         </error-handler>
     </flow>
-    <flow name="get:\savings:savingscalculatorapi-config">
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+    <flow name="get:\:savingscalculatorapi-config">
+        <logger level="INFO" doc:name="Logger" doc:id="f105ba17-149c-4381-8f46-00e646736136" />
+		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimate">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"years" : attributes.queryParams.years,
+	"deposit" : attributes.queryParams.deposit,
+	"rate" : attributes.queryParams.rate
+}]]]></http:query-params>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="c39fbff0-4b54-48d5-afb3-6f78dc561c5e" />
+		<ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd" doc:id="3341c496-0d3e-4d6a-bfdb-612f9922a199">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
-{
-  balance: "8933.42"
-}]]></ee:set-payload>
+payload]]></ee:set-payload>
             </ee:message>
         </ee:transform>
     </flow>
