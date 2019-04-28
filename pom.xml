@@ -42,18 +42,18 @@
                         <phase>test</phase>
                         <goals>
                             <goal>test</goal>
-                            <goal>coverage-report</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <coverage>
+				<configuration>
+				     <coverage>
                         <runCoverage>true</runCoverage>
                         <formats>
                             <format>html</format>
                         </formats>
                     </coverage>
-                </configuration>
+				   <runtimeProduct>MULE_EE</runtimeProduct>
+				</configuration>
             </plugin>
         </plugins>
 	</build>
