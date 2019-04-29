@@ -128,8 +128,7 @@ output application/json
         </error-handler>
     </flow>
 	<flow name="get:\:savingscalculatorapi-config">
-        <logger level="INFO" doc:name="Logger" doc:id="f105ba17-149c-4381-8f46-00e646736136" />
-		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimate">
+		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimates">
 			<http:query-params><![CDATA[#[output application/java
 ---
 {
@@ -138,7 +137,7 @@ output application/json
 	"rate" : attributes.queryParams.rate
 }]]]></http:query-params>
 		</http:request>
-		<logger level="INFO" doc:name="Logger" doc:id="c39fbff0-4b54-48d5-afb3-6f78dc561c5e" />
+		<logger level="INFO" doc:name="Logger" doc:id="f105ba17-149c-4381-8f46-00e646736136" />
 		<ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd" doc:id="3341c496-0d3e-4d6a-bfdb-612f9922a199">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
@@ -147,6 +146,5 @@ output application/json
 payload]]></ee:set-payload>
             </ee:message>
         </ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="364f7a69-d5e1-4ea8-b18e-774a6577fdd2" />
     </flow>
 </mule>
