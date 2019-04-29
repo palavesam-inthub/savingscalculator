@@ -128,7 +128,7 @@ output application/json
         </error-handler>
     </flow>
 	<flow name="get:\:savingscalculatorapi-config">
-		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimates">
+		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimate">
 			<http:query-params><![CDATA[#[output application/java
 ---
 {
