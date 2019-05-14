@@ -7,9 +7,7 @@
     <http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="bec56049-cb58-4a54-9dc2-71664bdfda1e" >
 		<http:request-connection host="savingsample.mybluemix.net" />
 	</http:request-config>
-	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="c43c9011-3670-417c-a8e2-5430eeb8aad1" >
-		<http:request-connection host="savingsample.mybluemix.net" />
-	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="aa2010e9-8280-41eb-9390-75951dc53825" file="config.yaml" />
 	<flow name="savingscalculatorapi-main">
         <http:listener config-ref="savingscalculatorapi-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -128,7 +126,7 @@ output application/json
         </error-handler>
     </flow>
 	<flow name="get:\:savingscalculatorapi-config">
-		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration1" path="/api/Plans/estimate">
+		<http:request method="GET" doc:name="Request" doc:id="e7173663-9c26-42d5-afa5-9887d98a9cdc" config-ref="HTTP_Request_configuration" path="/api/Plans/estimate">
 			<http:query-params><![CDATA[#[output application/java
 ---
 {

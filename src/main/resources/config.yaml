@@ -1,0 +1,10 @@
+anypoint:
+ ANYPOINT_URI: "https://anypoint.mulesoft.com"
+ ANYPOINT_USRNAME: "lakshmipriya3"
+ ANYPOINT_PASSWD: "Sayirp@3"
+ ANYPNT_ORG_ID: "96998e2d-2946-4ef9-ba31-766683eee68e"
+ ANYPNT_ENV_ID: "2cbfb163-e97e-4c26-a733-72893cc24615"
+ MULE_VERSION: "4.1.5"
+ SCRIPTS_DIR: "/usr/share/go-agent/mulescripts"
+ APP_NAME: "savingscalculatorapi-build"
+ APP_JAR_SRC_PATH: "app-src/target"
