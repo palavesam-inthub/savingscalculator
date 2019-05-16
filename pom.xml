@@ -29,6 +29,9 @@
 				<cloudHubDeployment>
 					    <muleVersion>${mule.version}</muleVersion>
 					    <applicationName>${cloudhub.application.name}</applicationName>
+				        <properties>
+				           <env>${env}</env>
+				        </properties>
 				</cloudHubDeployment>
 				</configuration>
 			</plugin>

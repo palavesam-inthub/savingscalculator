@@ -5,9 +5,11 @@
     </http:listener-config>
     <apikit:config name="savingscalculatorapi-config" raml="savingscalculatorapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="bec56049-cb58-4a54-9dc2-71664bdfda1e" >
-		<http:request-connection host="savingsample.mybluemix.net" />
+		<http:request-connection host="${savingscalculatorapi.host}" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="aa2010e9-8280-41eb-9390-75951dc53825" file="config.yaml" />
+	<configuration-properties doc:name="Configuration properties" doc:id="4793f2d9-8e42-4f8c-8afa-4366f10b4384" file="${env}_config.yaml"/>
+	<global-property doc:name="Global Property" doc:id="fdcb9035-38c9-4140-9326-10f6c1c7fc02" name="env" value="test" />
 	<flow name="savingscalculatorapi-main">
         <http:listener config-ref="savingscalculatorapi-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
